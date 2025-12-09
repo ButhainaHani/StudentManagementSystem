@@ -170,7 +170,7 @@
             // btnSort
             // 
             this.btnSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSort.Location = new System.Drawing.Point(688, 360);
+            this.btnSort.Location = new System.Drawing.Point(688, 366);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(100, 50);
             this.btnSort.TabIndex = 8;
