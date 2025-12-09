@@ -41,6 +41,7 @@
             this.btnShowAll = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchId = new System.Windows.Forms.TextBox();
+            this.btnSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -166,11 +167,22 @@
             this.txtSearchId.Size = new System.Drawing.Size(457, 45);
             this.txtSearchId.TabIndex = 7;
             // 
+            // btnSort
+            // 
+            this.btnSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSort.Location = new System.Drawing.Point(688, 360);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(100, 50);
+            this.btnSort.TabIndex = 8;
+            this.btnSort.Text = "Sort";
+            this.btnSort.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSort);
             this.Controls.Add(this.txtSearchId);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnShowAll);
@@ -202,6 +214,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colAge;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGpa;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFaculty;
+        private System.Windows.Forms.Button btnSort;
     }
 }
 
