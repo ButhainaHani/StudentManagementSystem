@@ -28,6 +28,23 @@ namespace Student_Management_System
                 dataGridView1.Rows.Add(s.Name, s.ID, s.Age, s.GPA, s.Faculty);
             }
         }
+        // helper: convert linked list to list (if not already present in StudentLinkedList)
+        private List<Student> GetAllStudents()
+        {
+            return students.ToList(); // students is your StudentLinkedList instance
+        }
+
+        // helper: show list of students in the DataGridView
+        private void ShowStudentsInGrid(List<Student> list)
+        {
+            dataGridView1.Rows.Clear();
+
+            foreach (var st in list)
+            {
+                dataGridView1.Rows.Add(st.Name, st.ID, st.Age, st.GPA, st.Faculty);
+            }
+        }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         
@@ -42,29 +59,54 @@ namespace Student_Management_System
             }
         }
 
-        private int BinarySearchById(List<Student> arr, int id)
+        private List<Student> LinearSearchAllFields(string query)
         {
-            int left = 0;
-            int right = arr.Count - 1;
+            var results = new List<Student>();
 
-            while (left <= right)
+            if (string.IsNullOrWhiteSpace(query))
+                return results;
+
+            query = query.Trim();
+
+            // get all students
+            var list = GetAllStudents();
+
+            foreach (var st in list)
             {
-                int mid = left + (right - left) / 2;
+                bool match = false;
 
-                if (arr[mid].ID == id)
-                    return mid;
+                // Name (case-insensitive)
+                if (!string.IsNullOrEmpty(st.Name) &&
+                    st.Name.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    match = true;
+                }
 
-                if (arr[mid].ID < id)
-                    left = mid + 1;
-                else
-                    right = mid - 1;
+                // ID (contains)
+                if (!match && st.ID.ToString().Contains(query))
+                    match = true;
+
+                // Age (contains)
+                if (!match && st.Age.ToString().Contains(query))
+                    match = true;
+
+                // GPA (contains)
+                if (!match && st.GPA.ToString().Contains(query))
+                    match = true;
+
+                // Faculty (case-insensitive)
+                if (!match && !string.IsNullOrEmpty(st.Faculty) &&
+                    st.Faculty.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    match = true;
+                }
+
+                if (match)
+                    results.Add(st);
             }
 
-            return -1; // not found
+            return results;
         }
-
-
-
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             RefreshGrid();
@@ -72,31 +114,16 @@ namespace Student_Management_System
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string query = txtSearchId.Text.Trim().ToLower();
+            // change txtSearch below if your textbox has a different name (e.g., txtSearchId)
+            string query = txtSearchId.Text;
 
-            if (string.IsNullOrEmpty(query))
+            if (string.IsNullOrWhiteSpace(query))
             {
                 MessageBox.Show("Please enter a search value.");
                 return;
             }
 
-            // Get all students from the linked list into a List (array-like structure)
-            var list = students.ToList();
-
-            if (list.Count == 0)
-            {
-                MessageBox.Show("No students in the system.");
-                return;
-            }
-
-            // Linear search over all fields
-            var results = list.Where(std =>
-                (!string.IsNullOrEmpty(std.Name) && std.Name.ToLower().Contains(query)) ||
-                std.ID.ToString().Contains(query) ||
-                std.Age.ToString().Contains(query) ||
-                std.GPA.ToString().Contains(query) ||
-                (!string.IsNullOrEmpty(std.Faculty) && std.Faculty.ToLower().Contains(query))
-            ).ToList();
+            var results = LinearSearchAllFields(query);
 
             if (results.Count == 0)
             {
@@ -104,13 +131,9 @@ namespace Student_Management_System
                 return;
             }
 
-            // Show only matched students in DataGridView
-            dataGridView1.Rows.Clear();
-            foreach (var std in results)
-            {
-                dataGridView1.Rows.Add(std.Name, std.ID, std.Age, std.GPA, std.Faculty);
-            }
+            ShowStudentsInGrid(results);
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
