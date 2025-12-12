@@ -16,8 +16,17 @@ namespace Student_Management_System
         {
             InitializeComponent();
         }
+
+        // LinkedList لكل الطلاب
         StudentLinkedList students = new StudentLinkedList();
 
+        // Priority Queue للطلاب حسب GPA
+        StudentPriorityQueue serviceQueue = new StudentPriorityQueue();
+        StudentPriorityQueue priorityQueue = new StudentPriorityQueue();
+
+        // ===============================
+        //  تحديث عرض جميع الطلاب في DataGridView
+        // ===============================
         private void RefreshGrid()
         {
             dataGridView1.Rows.Clear();
@@ -28,85 +37,80 @@ namespace Student_Management_System
                 dataGridView1.Rows.Add(s.Name, s.ID, s.Age, s.GPA, s.Faculty);
             }
         }
-        // helper: convert linked list to list (if not already present in StudentLinkedList)
+
+        // دالة مساعدة للحصول على كل الطلاب
         private List<Student> GetAllStudents()
         {
-            return students.ToList(); // students is your StudentLinkedList instance
+            return students.ToList();
         }
 
-        // helper: show list of students in the DataGridView
+        // عرض قائمة معينة من الطلاب في DataGridView
         private void ShowStudentsInGrid(List<Student> list)
         {
             dataGridView1.Rows.Clear();
-
             foreach (var st in list)
             {
                 dataGridView1.Rows.Add(st.Name, st.ID, st.Age, st.GPA, st.Faculty);
             }
         }
 
-
+        // ===============================
+        //  إضافة طالب جديد
+        // ===============================
         private void btnAdd_Click(object sender, EventArgs e)
-        
         {
             AddStudentForm addForm = new AddStudentForm();
 
             if (addForm.ShowDialog() == DialogResult.OK)
             {
+                // إضافة الطالب للـ LinkedList
                 students.Add(addForm.CreatedStudent);
 
-                RefreshGrid();  
+                // إضافة الطالب للكيو حسب الأولوية
+                serviceQueue.Enqueue(addForm.CreatedStudent);
+
+                RefreshGrid();
             }
         }
 
+        // ===============================
+        //  البحث في جميع الحقول
+        // ===============================
         private List<Student> LinearSearchAllFields(string query)
         {
             var results = new List<Student>();
-
-            if (string.IsNullOrWhiteSpace(query))
-                return results;
+            if (string.IsNullOrWhiteSpace(query)) return results;
 
             query = query.Trim();
-
-            // get all students
             var list = GetAllStudents();
 
             foreach (var st in list)
             {
                 bool match = false;
 
-                // Name (case-insensitive)
                 if (!string.IsNullOrEmpty(st.Name) &&
                     st.Name.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0)
-                {
                     match = true;
-                }
 
-                // ID (contains)
                 if (!match && st.ID.ToString().Contains(query))
                     match = true;
 
-                // Age (contains)
                 if (!match && st.Age.ToString().Contains(query))
                     match = true;
 
-                // GPA (contains)
                 if (!match && st.GPA.ToString().Contains(query))
                     match = true;
 
-                // Faculty (case-insensitive)
                 if (!match && !string.IsNullOrEmpty(st.Faculty) &&
                     st.Faculty.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0)
-                {
                     match = true;
-                }
 
-                if (match)
-                    results.Add(st);
+                if (match) results.Add(st);
             }
 
             return results;
         }
+
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             RefreshGrid();
@@ -114,7 +118,6 @@ namespace Student_Management_System
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            // change txtSearch below if your textbox has a different name (e.g., txtSearchId)
             string query = txtSearchId.Text;
 
             if (string.IsNullOrWhiteSpace(query))
@@ -134,7 +137,9 @@ namespace Student_Management_System
             ShowStudentsInGrid(results);
         }
 
-
+        // ===============================
+        //  الترتيب
+        // ===============================
         private void button1_Click(object sender, EventArgs e)
         {
             contextMenuStrip1.Show(btnSort, 0, btnSort.Height);
@@ -163,5 +168,75 @@ namespace Student_Management_System
             students.SortByGPA();
             RefreshGrid();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        // ===============================
+        //  الكيو: عرض الطلاب في DataGridView آخر
+        // ===============================
+        private void RefreshQueueGrid()
+        {
+            dataGridViewQueue.Rows.Clear();
+            var queueList = serviceQueue.DisplayQueue();
+
+            foreach (var s in queueList)
+            {
+                dataGridViewQueue.Rows.Add(s.ID, s.Name, s.GPA, s.Faculty);
+            }
+        }
+
+        private void btnShowQueue_Click(object sender, EventArgs e)
+        {
+            RefreshQueueGrid();
+        }
+
+        // ===============================
+        //  خدمة الطالب ذو الأولوية الأعلى
+        // ===============================
+        private void btnServeStudent_Click(object sender, EventArgs e)
+        {
+            Student servedStudent = serviceQueue.Dequeue();
+
+            if (servedStudent != null)
+            {
+                MessageBox.Show($"Student {servedStudent.Name} with GPA {servedStudent.GPA} is being served!");
+                RefreshQueueGrid(); // تحديث عرض الكيو
+            }
+            else
+            {
+                MessageBox.Show("No students in queue.");
+            }
+        }
+
+        private void btnShowQueue_Click_1(object sender, EventArgs e)
+        {
+            dataGridViewQueue.Rows.Clear();
+            var list = serviceQueue.DisplayQueue(); // استخدمي الكيو الصحيح
+
+            foreach (var s in list)
+            {
+                dataGridViewQueue.Rows.Add(s.ID, s.Name, s.GPA, s.Faculty);
+            }
+        }
+
+        private void btnServe_Click(object sender, EventArgs e)
+        {
+            Student servedStudent = serviceQueue.Dequeue(); // الطلاب اللي هيتخدموا من نفس الكيو
+
+            if (servedStudent != null)
+            {
+                MessageBox.Show($"Student {servedStudent.Name} with GPA {servedStudent.GPA} is being served!");
+                RefreshQueueGrid(); // تحديث عرض الكيو بعد ما الطالب اتخدم
+            }
+            else
+            {
+                MessageBox.Show("No students in queue.");
+            }
+            
+        }
     }
 }
+
