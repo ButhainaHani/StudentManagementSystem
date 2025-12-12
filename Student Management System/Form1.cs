@@ -112,8 +112,33 @@ namespace Student_Management_System
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(btnSort, 0, btnSort.Height);
+        }
 
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            students.SortByName();
+            RefreshGrid();
+        }
 
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            students.SortByID();
+            RefreshGrid();
+        }
 
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            students.SortByAge();
+            RefreshGrid();
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            students.SortByGPA();
+            RefreshGrid();
+        }
     }
 }

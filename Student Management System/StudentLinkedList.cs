@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Student_Management_System
 {
-    //internal class StudentLinkedList
-    //{
-    //}
-    using System.Collections.Generic;
-
     public class Node
     {
         public Student Data;
@@ -45,7 +37,7 @@ namespace Student_Management_System
             temp.Next = newNode;
         }
 
-        // رجّع كل الطلاب في List (عشان نعرضهم في الجريد)
+        // Convert to List
         public List<Student> ToList()
         {
             List<Student> list = new List<Student>();
@@ -72,6 +64,101 @@ namespace Student_Management_System
             }
             return null;
         }
-    }
 
+
+        // ================================
+        //       SORT FUNCTIONS
+        // ================================
+
+        private void Swap(Node a, Node b)
+        {
+            Student temp = a.Data;
+            a.Data = b.Data;
+            b.Data = temp;
+        }
+
+        // Sort by Name (A-Z)
+        public void SortByName()
+        {
+            if (head == null) return;
+
+            Node current = head;
+            while (current != null)
+            {
+                Node index = current.Next;
+                while (index != null)
+                {
+                    if (string.Compare(current.Data.Name, index.Data.Name) > 0)
+                    {
+                        Swap(current, index);
+                    }
+                    index = index.Next;
+                }
+                current = current.Next;
+            }
+        }
+
+        // Sort by GPA (High → Low)
+        public void SortByGPA()
+        {
+            if (head == null) return;
+
+            Node current = head;
+            while (current != null)
+            {
+                Node index = current.Next;
+                while (index != null)
+                {
+                    if (current.Data.GPA < index.Data.GPA)
+                    {
+                        Swap(current, index);
+                    }
+                    index = index.Next;
+                }
+                current = current.Next;
+            }
+        }
+
+        // Sort by ID (small → big)
+        public void SortByID()
+        {
+            if (head == null) return;
+
+            Node current = head;
+            while (current != null)
+            {
+                Node index = current.Next;
+                while (index != null)
+                {
+                    if (current.Data.ID > index.Data.ID)
+                    {
+                        Swap(current, index);
+                    }
+                    index = index.Next;
+                }
+                current = current.Next;
+            }
+        }
+
+        // لو عندك Age في Student Class
+        public void SortByAge()
+        {
+            if (head == null) return;
+
+            Node current = head;
+            while (current != null)
+            {
+                Node index = current.Next;
+                while (index != null)
+                {
+                    if (current.Data.Age > index.Data.Age)
+                    {
+                        Swap(current, index);
+                    }
+                    index = index.Next;
+                }
+                current = current.Next;
+            }
+        }
+    }
 }
