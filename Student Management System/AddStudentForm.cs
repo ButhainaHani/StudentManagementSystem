@@ -16,6 +16,18 @@ namespace Student_Management_System
         {
             InitializeComponent();
         }
+        public AddStudentForm(Student s)
+        {
+            InitializeComponent();
+
+            txtName.Text = s.Name;
+            txtID.Text = s.ID.ToString();
+            txtAge.Text = s.Age.ToString();
+            txtGPA.Text = s.GPA.ToString();
+            txtFaculty.Text = s.Faculty;
+
+            txtID.ReadOnly = true; // ID must not change
+        }
         public Student CreatedStudent { get; set; }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -160,5 +160,54 @@ namespace Student_Management_System
                 current = current.Next;
             }
         }
+        public bool DeleteById(int id)
+        {
+            if (head == null)
+                return false;
+
+            // If head is the one to delete
+            if (head.Data.ID == id)
+            {
+                head = head.Next;
+                return true;
+            }
+
+            Node prev = head;
+            Node curr = head.Next;
+
+            while (curr != null)
+            {
+                if (curr.Data.ID == id)
+                {
+                    prev.Next = curr.Next;
+                    return true;
+                }
+
+                prev = curr;
+                curr = curr.Next;
+            }
+
+            return false;
+        }
+        public bool UpdateStudent(int id, Student newData)
+        {
+            Node temp = head;
+
+            while (temp != null)
+            {
+                if (temp.Data.ID == id)
+                {
+                    temp.Data.Name = newData.Name;
+                    temp.Data.ID = newData.ID;
+                    temp.Data.Age = newData.Age;
+                    temp.Data.GPA = newData.GPA;
+                    temp.Data.Faculty = newData.Faculty;
+                    return true;
+                }
+                temp = temp.Next;
+            }
+
+            return false;
+        }
     }
 }

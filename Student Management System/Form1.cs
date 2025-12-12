@@ -237,6 +237,70 @@ namespace Student_Management_System
             }
             
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a student.");
+                return;
+            }
+
+            // get selected student ID from grid
+            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
+
+            // get student from linked list
+            Student selectedStudent = students.ToList()
+                                               .FirstOrDefault(st => st.ID == id);
+
+            if (selectedStudent == null)
+            {
+                MessageBox.Show("Student not found.");
+                return;
+            }
+
+            // open AddStudentForm with existing data
+            AddStudentForm updateForm = new AddStudentForm(selectedStudent);
+
+            if (updateForm.ShowDialog() == DialogResult.OK)
+            {
+                bool updated = students.UpdateStudent(id, updateForm.CreatedStudent);
+
+                if (updated)
+                {
+                    RefreshGrid();
+                    MessageBox.Show("Student updated successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Update failed.");
+                }
+            }
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a student to delete.");
+                return;
+            }
+
+            int id = Convert.ToInt32(
+                dataGridView1.SelectedRows[0].Cells[1].Value); // ID column
+
+            bool deleted = students.DeleteById(id);
+
+            if (deleted)
+            {
+                RefreshGrid();
+                MessageBox.Show("Student deleted successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Student not found.");
+            }
+        }
     }
 }
 

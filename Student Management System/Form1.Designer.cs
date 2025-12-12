@@ -49,12 +49,12 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewQueue = new System.Windows.Forms.DataGridView();
-            this.btnShowQueue = new System.Windows.Forms.Button();
-            this.btnServe = new System.Windows.Forms.Button();
             this.colQueueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQueueName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQueueGPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQueueFaculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnShowQueue = new System.Windows.Forms.Button();
+            this.btnServe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueue)).BeginInit();
@@ -64,7 +64,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(117, 9);
+            this.label1.Location = new System.Drawing.Point(134, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(488, 39);
@@ -80,12 +80,12 @@
             this.colAge,
             this.colGpa,
             this.colFaculty});
-            this.dataGridView1.Location = new System.Drawing.Point(11, 69);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 69);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 30;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(567, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(648, 300);
             this.dataGridView1.TabIndex = 1;
             // 
             // colName
@@ -126,10 +126,10 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(602, 69);
+            this.btnAdd.Location = new System.Drawing.Point(688, 69);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(87, 50);
+            this.btnAdd.Size = new System.Drawing.Size(99, 50);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -138,32 +138,34 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(602, 143);
+            this.btnDelete.Location = new System.Drawing.Point(688, 143);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(87, 50);
+            this.btnDelete.Size = new System.Drawing.Size(99, 50);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(602, 215);
+            this.btnUpdate.Location = new System.Drawing.Point(688, 215);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(87, 50);
+            this.btnUpdate.Size = new System.Drawing.Size(99, 50);
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnShowAll
             // 
             this.btnShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowAll.Location = new System.Drawing.Point(602, 289);
+            this.btnShowAll.Location = new System.Drawing.Point(688, 289);
             this.btnShowAll.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(87, 50);
+            this.btnShowAll.Size = new System.Drawing.Size(99, 50);
             this.btnShowAll.TabIndex = 5;
             this.btnShowAll.Text = "ShowAll";
             this.btnShowAll.UseVisualStyleBackColor = true;
@@ -172,10 +174,10 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(20, 388);
+            this.btnSearch.Location = new System.Drawing.Point(23, 388);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(87, 50);
+            this.btnSearch.Size = new System.Drawing.Size(99, 50);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -184,20 +186,20 @@
             // txtSearchId
             // 
             this.txtSearchId.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchId.Location = new System.Drawing.Point(113, 388);
+            this.txtSearchId.Location = new System.Drawing.Point(129, 388);
             this.txtSearchId.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSearchId.Name = "txtSearchId";
-            this.txtSearchId.Size = new System.Drawing.Size(401, 45);
+            this.txtSearchId.Size = new System.Drawing.Size(458, 45);
             this.txtSearchId.TabIndex = 7;
             // 
             // btnSort
             // 
             this.btnSort.ContextMenuStrip = this.contextMenuStrip1;
             this.btnSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSort.Location = new System.Drawing.Point(602, 354);
+            this.btnSort.Location = new System.Drawing.Point(688, 354);
             this.btnSort.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(87, 50);
+            this.btnSort.Size = new System.Drawing.Size(99, 50);
             this.btnSort.TabIndex = 8;
             this.btnSort.Text = "sort";
             this.btnSort.UseVisualStyleBackColor = true;
@@ -250,34 +252,12 @@
             this.colQueueName,
             this.colQueueGPA,
             this.colQueueFaculty});
-            this.dataGridViewQueue.Location = new System.Drawing.Point(828, 69);
+            this.dataGridViewQueue.Location = new System.Drawing.Point(946, 69);
             this.dataGridViewQueue.Name = "dataGridViewQueue";
             this.dataGridViewQueue.RowHeadersWidth = 51;
             this.dataGridViewQueue.RowTemplate.Height = 26;
-            this.dataGridViewQueue.Size = new System.Drawing.Size(512, 300);
+            this.dataGridViewQueue.Size = new System.Drawing.Size(585, 300);
             this.dataGridViewQueue.TabIndex = 9;
-            // 
-            // btnShowQueue
-            // 
-            this.btnShowQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowQueue.Location = new System.Drawing.Point(1366, 96);
-            this.btnShowQueue.Name = "btnShowQueue";
-            this.btnShowQueue.Size = new System.Drawing.Size(127, 44);
-            this.btnShowQueue.TabIndex = 10;
-            this.btnShowQueue.Text = "Show Queue";
-            this.btnShowQueue.UseVisualStyleBackColor = true;
-            this.btnShowQueue.Click += new System.EventHandler(this.btnShowQueue_Click_1);
-            // 
-            // btnServe
-            // 
-            this.btnServe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServe.Location = new System.Drawing.Point(1366, 149);
-            this.btnServe.Name = "btnServe";
-            this.btnServe.Size = new System.Drawing.Size(127, 44);
-            this.btnServe.TabIndex = 11;
-            this.btnServe.Text = "Serve Student";
-            this.btnServe.UseVisualStyleBackColor = true;
-            this.btnServe.Click += new System.EventHandler(this.btnServe_Click);
             // 
             // colQueueID
             // 
@@ -307,11 +287,33 @@
             this.colQueueFaculty.Name = "colQueueFaculty";
             this.colQueueFaculty.Width = 125;
             // 
+            // btnShowQueue
+            // 
+            this.btnShowQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowQueue.Location = new System.Drawing.Point(1561, 96);
+            this.btnShowQueue.Name = "btnShowQueue";
+            this.btnShowQueue.Size = new System.Drawing.Size(145, 44);
+            this.btnShowQueue.TabIndex = 10;
+            this.btnShowQueue.Text = "Show Queue";
+            this.btnShowQueue.UseVisualStyleBackColor = true;
+            this.btnShowQueue.Click += new System.EventHandler(this.btnShowQueue_Click_1);
+            // 
+            // btnServe
+            // 
+            this.btnServe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServe.Location = new System.Drawing.Point(1561, 149);
+            this.btnServe.Name = "btnServe";
+            this.btnServe.Size = new System.Drawing.Size(145, 44);
+            this.btnServe.TabIndex = 11;
+            this.btnServe.Text = "Serve Student";
+            this.btnServe.UseVisualStyleBackColor = true;
+            this.btnServe.Click += new System.EventHandler(this.btnServe_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1537, 699);
+            this.ClientSize = new System.Drawing.Size(1757, 699);
             this.Controls.Add(this.btnServe);
             this.Controls.Add(this.btnShowQueue);
             this.Controls.Add(this.dataGridViewQueue);
