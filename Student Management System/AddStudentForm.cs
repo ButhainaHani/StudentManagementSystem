@@ -52,6 +52,20 @@ namespace Student_Management_System
             }
         }
 
+        private void AddStudentForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGPA_TextChanged(object sender, EventArgs e)
+        {
+            //..
+        }
+
+        private void txtAge_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

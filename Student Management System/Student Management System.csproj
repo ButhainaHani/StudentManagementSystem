@@ -77,6 +77,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -90,6 +91,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gemini_Generated_Image_dx7fl2dx7fl2dx7f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-12-13 150938.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gemini_Generated_Image_gknaflgknaflgkna%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gemini_Generated_Image_5tvfn95tvfn95tvf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-13_15-25-10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\656a7f87-7c5b-475a-ac32-f1523ee03365.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-13_15-38-55.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-13_15-03-24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-13_15-38-551.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-13_15-03-241.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-11-12_23-23-38.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\656a7f87-7c5b-475a-ac32-f1523ee033651.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-13_15-23-27.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\656a7f87-7c5b-475a-ac32-f1523ee033652.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-13_15-54-53.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

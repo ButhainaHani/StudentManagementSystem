@@ -57,6 +57,7 @@ namespace Student_Management_System
         // ===============================
         //  إضافة طالب جديد
         // ===============================
+        //jj
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddStudentForm addForm = new AddStudentForm();
@@ -300,6 +301,16 @@ namespace Student_Management_System
             {
                 MessageBox.Show("Student not found.");
             }
+        }
+
+        private void txtSearchId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
