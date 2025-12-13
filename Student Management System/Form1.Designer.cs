@@ -33,11 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGpa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFaculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -51,12 +46,17 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewQueue = new System.Windows.Forms.DataGridView();
-            this.colQueueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQueueName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQueueGPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQueueFaculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnShowQueue = new System.Windows.Forms.Button();
             this.btnServe = new System.Windows.Forms.Button();
+            this.colQueueFaculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQueueGPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQueueName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQueueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGpa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFaculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueue)).BeginInit();
@@ -74,7 +74,6 @@
             this.label1.Size = new System.Drawing.Size(1003, 76);
             this.label1.TabIndex = 0;
             this.label1.Text = "Student Management System";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dataGridView1
             // 
@@ -85,8 +84,8 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colName,
             this.colID,
-            this.colAge,
             this.colGpa,
+            this.colAge,
             this.colFaculty});
             this.dataGridView1.Location = new System.Drawing.Point(53, 155);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -95,41 +94,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(812, 655);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // colName
-            // 
-            this.colName.HeaderText = "Name";
-            this.colName.MinimumWidth = 6;
-            this.colName.Name = "colName";
-            this.colName.Width = 125;
-            // 
-            // colID
-            // 
-            this.colID.HeaderText = "ID";
-            this.colID.MinimumWidth = 6;
-            this.colID.Name = "colID";
-            this.colID.Width = 125;
-            // 
-            // colAge
-            // 
-            this.colAge.HeaderText = "Age";
-            this.colAge.MinimumWidth = 6;
-            this.colAge.Name = "colAge";
-            this.colAge.Width = 125;
-            // 
-            // colGpa
-            // 
-            this.colGpa.HeaderText = "GPA";
-            this.colGpa.MinimumWidth = 6;
-            this.colGpa.Name = "colGpa";
-            this.colGpa.Width = 125;
-            // 
-            // colFaculty
-            // 
-            this.colFaculty.HeaderText = "Faculty";
-            this.colFaculty.MinimumWidth = 6;
-            this.colFaculty.Name = "colFaculty";
-            this.colFaculty.Width = 125;
             // 
             // btnAdd
             // 
@@ -212,7 +176,6 @@
             this.txtSearchId.Name = "txtSearchId";
             this.txtSearchId.Size = new System.Drawing.Size(604, 116);
             this.txtSearchId.TabIndex = 7;
-            this.txtSearchId.TextChanged += new System.EventHandler(this.txtSearchId_TextChanged);
             // 
             // btnSort
             // 
@@ -286,34 +249,6 @@
             this.dataGridViewQueue.Size = new System.Drawing.Size(729, 655);
             this.dataGridViewQueue.TabIndex = 9;
             // 
-            // colQueueID
-            // 
-            this.colQueueID.HeaderText = "ID";
-            this.colQueueID.MinimumWidth = 6;
-            this.colQueueID.Name = "colQueueID";
-            this.colQueueID.Width = 125;
-            // 
-            // colQueueName
-            // 
-            this.colQueueName.HeaderText = "Name";
-            this.colQueueName.MinimumWidth = 6;
-            this.colQueueName.Name = "colQueueName";
-            this.colQueueName.Width = 125;
-            // 
-            // colQueueGPA
-            // 
-            this.colQueueGPA.HeaderText = "GPA";
-            this.colQueueGPA.MinimumWidth = 6;
-            this.colQueueGPA.Name = "colQueueGPA";
-            this.colQueueGPA.Width = 125;
-            // 
-            // colQueueFaculty
-            // 
-            this.colQueueFaculty.HeaderText = "Faculty";
-            this.colQueueFaculty.MinimumWidth = 6;
-            this.colQueueFaculty.Name = "colQueueFaculty";
-            this.colQueueFaculty.Width = 125;
-            // 
             // btnShowQueue
             // 
             this.btnShowQueue.BackColor = System.Drawing.Color.DarkRed;
@@ -341,6 +276,69 @@
             this.btnServe.Text = "Serve Student";
             this.btnServe.UseVisualStyleBackColor = false;
             this.btnServe.Click += new System.EventHandler(this.btnServe_Click);
+            // 
+            // colQueueFaculty
+            // 
+            this.colQueueFaculty.HeaderText = "Faculty";
+            this.colQueueFaculty.MinimumWidth = 6;
+            this.colQueueFaculty.Name = "colQueueFaculty";
+            this.colQueueFaculty.Width = 125;
+            // 
+            // colQueueGPA
+            // 
+            this.colQueueGPA.HeaderText = "GPA";
+            this.colQueueGPA.MinimumWidth = 6;
+            this.colQueueGPA.Name = "colQueueGPA";
+            this.colQueueGPA.Width = 125;
+            // 
+            // colQueueName
+            // 
+            this.colQueueName.HeaderText = "Name";
+            this.colQueueName.MinimumWidth = 6;
+            this.colQueueName.Name = "colQueueName";
+            this.colQueueName.Width = 125;
+            // 
+            // colQueueID
+            // 
+            this.colQueueID.HeaderText = "ID";
+            this.colQueueID.MinimumWidth = 6;
+            this.colQueueID.Name = "colQueueID";
+            this.colQueueID.Width = 125;
+            // 
+            // colName
+            // 
+            this.colName.HeaderText = "Name";
+            this.colName.MinimumWidth = 6;
+            this.colName.Name = "colName";
+            this.colName.Width = 125;
+            // 
+            // colID
+            // 
+            this.colID.HeaderText = "ID";
+            this.colID.MinimumWidth = 6;
+            this.colID.Name = "colID";
+            this.colID.Width = 125;
+            // 
+            // colGpa
+            // 
+            this.colGpa.HeaderText = "GPA";
+            this.colGpa.MinimumWidth = 6;
+            this.colGpa.Name = "colGpa";
+            this.colGpa.Width = 125;
+            // 
+            // colAge
+            // 
+            this.colAge.HeaderText = "Age";
+            this.colAge.MinimumWidth = 6;
+            this.colAge.Name = "colAge";
+            this.colAge.Width = 125;
+            // 
+            // colFaculty
+            // 
+            this.colFaculty.HeaderText = "Faculty";
+            this.colFaculty.MinimumWidth = 6;
+            this.colFaculty.Name = "colFaculty";
+            this.colFaculty.Width = 125;
             // 
             // Form1
             // 
@@ -383,11 +381,6 @@
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearchId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colGpa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFaculty;
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -397,6 +390,11 @@
         private System.Windows.Forms.DataGridView dataGridViewQueue;
         private System.Windows.Forms.Button btnShowQueue;
         private System.Windows.Forms.Button btnServe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGpa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFaculty;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQueueID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQueueName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQueueGPA;
