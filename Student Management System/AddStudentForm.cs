@@ -18,6 +18,21 @@ namespace Student_Management_System
         }
         public Student CreatedStudent { get; set; }
 
+        public AddStudentForm(Student existingStudent)
+        {
+            InitializeComponent();
+
+            // اعرض البيانات في الفورم
+            txtName.Text = existingStudent.Name;
+            txtID.Text = existingStudent.ID.ToString();
+            txtAge.Text = existingStudent.Age.ToString();
+            txtGPA.Text = existingStudent.GPA.ToString();
+            txtFaculty.Text = existingStudent.Faculty;
+
+            // بحيث لو ضغط Save يتعدل نفس الطالب
+            CreatedStudent = existingStudent;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
           
@@ -29,8 +44,19 @@ namespace Student_Management_System
                 double gpa = double.Parse(txtGPA.Text);
                 string faculty = txtFaculty.Text;
 
-                CreatedStudent = new Student(name, id, age, gpa, faculty);
-
+                if (CreatedStudent != null)
+                {
+                    CreatedStudent.Name = name;
+                    CreatedStudent.ID = id;
+                    CreatedStudent.Age = age;
+                    CreatedStudent.GPA = gpa;
+                    CreatedStudent.Faculty = faculty;
+                }
+                else
+                {
+                    // لو جديد
+                    CreatedStudent = new Student(name, id, age, gpa, faculty);
+                }
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -40,6 +66,10 @@ namespace Student_Management_System
             }
         }
 
+        private void AddStudentForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

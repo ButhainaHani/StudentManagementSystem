@@ -160,5 +160,99 @@ namespace Student_Management_System
                 current = current.Next;
             }
         }
+        public bool DeleteById(int id)
+        {
+            if (head == null)
+                return false;
+
+            // If head is the one to delete
+            if (head.Data.ID == id)
+            {
+                head = head.Next;
+                return true;
+            }
+
+            Node prev = head;
+            Node curr = head.Next;
+
+            while (curr != null)
+            {
+                if (curr.Data.ID == id)
+                {
+                    prev.Next = curr.Next;
+                    return true;
+                }
+
+                prev = curr;
+                curr = curr.Next;
+            }
+
+            return false;
+        }
+        public bool UpdateStudent(int id, Student newData)
+        {
+            Node temp = head;
+
+            while (temp != null)
+            {
+                if (temp.Data.ID == id)
+                {
+                    temp.Data.Name = newData.Name;
+                    temp.Data.ID = newData.ID;
+                    temp.Data.Age = newData.Age;
+                    temp.Data.GPA = newData.GPA;
+                    temp.Data.Faculty = newData.Faculty;
+                    return true;
+                }
+                temp = temp.Next;
+            }
+
+            return false;
+        }
+
+        // إضافة جوه class StudentLinkedList بعد دوال Sort
+        // ===================================================
+
+        // حذف طالب بالـ ID
+        public void RemoveByID(int id)
+        {
+            if (head == null) return;
+
+            if (head.Data.ID == id)
+            {
+                head = head.Next;
+                return;
+            }
+
+            Node current = head;
+            while (current.Next != null)
+            {
+                if (current.Next.Data.ID == id)
+                {
+                    current.Next = current.Next.Next;
+                    return;
+                }
+                current = current.Next;
+            }
+        }
+
+        // تحديث بيانات طالب بالـ ID
+        public void UpdateStudent(Student updatedStudent)
+        {
+            Node current = head;
+            while (current != null)
+            {
+                if (current.Data.ID == updatedStudent.ID)
+                {
+                    current.Data.Name = updatedStudent.Name;
+                    current.Data.Age = updatedStudent.Age;
+                    current.Data.GPA = updatedStudent.GPA;
+                    current.Data.Faculty = updatedStudent.Faculty;
+                    return;
+                }
+                current = current.Next;
+            }
+        }
+
     }
 }

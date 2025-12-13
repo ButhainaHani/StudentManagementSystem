@@ -51,8 +51,8 @@
             this.dataGridViewQueue = new System.Windows.Forms.DataGridView();
             this.btnShowQueue = new System.Windows.Forms.Button();
             this.btnServe = new System.Windows.Forms.Button();
-            this.colQueueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQueueName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQueueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQueueGPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQueueFaculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -145,6 +145,7 @@
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // btnUpdate
             // 
@@ -156,6 +157,7 @@
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
             // 
             // btnShowAll
             // 
@@ -246,8 +248,8 @@
             // 
             this.dataGridViewQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewQueue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colQueueID,
             this.colQueueName,
+            this.colQueueID,
             this.colQueueGPA,
             this.colQueueFaculty});
             this.dataGridViewQueue.Location = new System.Drawing.Point(828, 69);
@@ -279,19 +281,19 @@
             this.btnServe.UseVisualStyleBackColor = true;
             this.btnServe.Click += new System.EventHandler(this.btnServe_Click);
             // 
-            // colQueueID
-            // 
-            this.colQueueID.HeaderText = "ID";
-            this.colQueueID.MinimumWidth = 6;
-            this.colQueueID.Name = "colQueueID";
-            this.colQueueID.Width = 125;
-            // 
             // colQueueName
             // 
             this.colQueueName.HeaderText = "Name";
             this.colQueueName.MinimumWidth = 6;
             this.colQueueName.Name = "colQueueName";
             this.colQueueName.Width = 125;
+            // 
+            // colQueueID
+            // 
+            this.colQueueID.HeaderText = "ID";
+            this.colQueueID.MinimumWidth = 6;
+            this.colQueueID.Name = "colQueueID";
+            this.colQueueID.Width = 125;
             // 
             // colQueueGPA
             // 
@@ -360,8 +362,8 @@
         private System.Windows.Forms.DataGridView dataGridViewQueue;
         private System.Windows.Forms.Button btnShowQueue;
         private System.Windows.Forms.Button btnServe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQueueID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQueueName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQueueID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQueueGPA;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQueueFaculty;
     }

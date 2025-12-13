@@ -33,6 +33,24 @@ namespace Student_Management_System
         {
             return new List<Student>(queue);
         }
+
+        // حذف طالب حسب ID
+        public void RemoveByID(int id)
+        {
+            queue.RemoveAll(s => s.ID == id);
+        }
+
+        // تعديل بيانات طالب
+        public void UpdateStudent(Student updatedStudent)
+        {
+            for (int i = 0; i < queue.Count; i++)
+            {
+                if (queue[i].ID == updatedStudent.ID)
+                    queue[i] = updatedStudent;
+            }
+            queue.Sort((a, b) => b.GPA.CompareTo(a.GPA)); // ترتيب حسب GPA بعد التحديث
+        }
+
     }
 }
 

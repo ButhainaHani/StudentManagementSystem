@@ -184,7 +184,7 @@ namespace Student_Management_System
 
             foreach (var s in queueList)
             {
-                dataGridViewQueue.Rows.Add(s.ID, s.Name, s.GPA, s.Faculty);
+                dataGridViewQueue.Rows.Add(s.Name, s.ID, s.GPA, s.Faculty);
             }
         }
 
@@ -218,7 +218,7 @@ namespace Student_Management_System
 
             foreach (var s in list)
             {
-                dataGridViewQueue.Rows.Add(s.ID, s.Name, s.GPA, s.Faculty);
+                dataGridViewQueue.Rows.Add(s.Name, s.ID, s.GPA, s.Faculty);
             }
         }
 
@@ -235,8 +235,126 @@ namespace Student_Management_System
             {
                 MessageBox.Show("No students in queue.");
             }
-            
+
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
+
+                // حذف من LinkedList
+                students.RemoveByID(selectedID);
+
+                // حذف من Priority Queue
+                serviceQueue.RemoveByID(selectedID);
+
+                // تحديث الجريدات
+                RefreshGrid();
+                RefreshQueueGrid();
+            }
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value);
+
+                AddStudentForm updateForm = new AddStudentForm(students.SearchById(selectedID));
+
+                if (updateForm.ShowDialog() == DialogResult.OK)
+                {
+                    Student updatedStudent = updateForm.CreatedStudent;
+
+                    // تحديث في LinkedList
+                    students.UpdateStudent(updatedStudent);
+
+                    // تحديث في Priority Queue
+                    serviceQueue.UpdateStudent(updatedStudent);
+
+                    // تحديث الجريدات
+                    RefreshGrid();
+                    RefreshQueueGrid();
+                }
+            }
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a student to delete.");
+                return;
+            }
+
+            int id = Convert.ToInt32(
+                dataGridView1.SelectedRows[0].Cells[1].Value); // ID column
+
+            bool deleted = students.DeleteById(id);
+
+            if (deleted)
+            {
+                // حذف من الكيو
+                serviceQueue.RemoveByID(id);
+
+                // تحديث الجريدين
+                RefreshGrid();
+                RefreshQueueGrid();
+
+                MessageBox.Show("Student deleted successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Student not found.");
+            }
+
+        }
+
+        private void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a student.");
+                return;
+            }
+
+            // get selected student ID from grid
+            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
+
+            // get student from linked list
+            Student selectedStudent = students.ToList()
+                                               .FirstOrDefault(st => st.ID == id);
+
+            if (selectedStudent == null)
+            {
+                MessageBox.Show("Student not found.");
+                return;
+            }
+
+            // open AddStudentForm with existing data
+            AddStudentForm updateForm = new AddStudentForm(selectedStudent);
+
+            if (updateForm.ShowDialog() == DialogResult.OK)
+            {
+                bool updated = students.UpdateStudent(id, updateForm.CreatedStudent);
+
+                if (updated)
+                {
+                    serviceQueue.UpdateStudent(updateForm.CreatedStudent);
+
+                    // تحديث الجريدين
+                    RefreshGrid();
+                    RefreshQueueGrid();
+                    RefreshGrid();
+                    MessageBox.Show("Student updated successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Update failed.");
+                }
+            }
         }
     }
 }
-
